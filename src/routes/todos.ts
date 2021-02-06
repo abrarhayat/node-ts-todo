@@ -9,7 +9,7 @@ import {
 
 const router = Router();
 
-router.get("/", getTodos);
+router.get("/todos", getTodos);
 
 router.post("/todo", createToDo);
 
