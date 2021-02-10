@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteToDo = exports.updateTodo = exports.createToDo = exports.getTodos = void 0;
 const todo_1 = __importDefault(require("../models/todo"));
-exports.getTodos = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const getTodos = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const todos = yield todo_1.default.find();
         res.status(200).json({ todos: todos });
@@ -23,7 +23,8 @@ exports.getTodos = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         next(err);
     }
 });
-exports.createToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.getTodos = getTodos;
+const createToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const body = req.body;
         const text = body.text;
@@ -42,7 +43,8 @@ exports.createToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
         next(err);
     }
 });
-exports.updateTodo = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.createToDo = createToDo;
+const updateTodo = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const body = req.body;
         const params = req.params;
@@ -66,7 +68,8 @@ exports.updateTodo = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
         next(err);
     }
 });
-exports.deleteToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.updateTodo = updateTodo;
+const deleteToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const params = req.params;
         const todoId = params.todoId;
@@ -86,3 +89,4 @@ exports.deleteToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
         next(err);
     }
 });
+exports.deleteToDo = deleteToDo;
